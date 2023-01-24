@@ -1,38 +1,60 @@
-<section class="container-sm">
-    <section class="row mt-5">
-        <section class="border rounded">
-            <form>
-                <h2 class="text-center">Register</h2>
-                <section class="form-group row">
-                  <label for="firstName" class="form-label">First Name</label>
-                  <section>
-                    <input type="text" class="form-control" name="firstName" [(ngModel)]="firstname" placeholder="First Name" required>
-                  </section>
-                </section>
-                <section class="form-group row">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <section>
-                      <input type="text" class="form-control" name="lastName" [(ngModel)]="lastname" placeholder="Last Name" required>
+<section class="vh-100">
+  <section class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <section class="container h-100">
+      <section class="row d-flex justify-content-center align-items-center h-100">
+        <section class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <section class="card" style="border-radius: 15px;">
+            <section class="card-body p-5 bg-light" style="border-radius: 15px;">
+              <h2 class="text-uppercase text-center mb-5">Register</h2>
+              <form [formGroup]="registroForm" (ngSubmit)="Enviar()">
+                <section class="form-outline mb-4">
+                  <input type="text" class="form-control form-control-lg" formControlName="firstname" />
+                  <label class="form-label" for="firstname">First Name</label>
+                  <section *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)">
+                    <section *ngIf="firstname?.errors?.['required']" class="alert alert-success">
+                      El Nombre es obligatorio
                     </section>
                   </section>
-                <section class="form-group row">
-                  <label for="username" class="form-label">Username</label>
-                  <section>
-                    <input type="text" class="form-control" name="username"  [(ngModel)]="username" placeholder="Username" required>
+                </section>
+
+                <section class="form-outline mb-4">
+                  <input type="text" class="form-control form-control-lg" formControlName="lastname" />
+                  <label class="form-label" for="lastname">Last Name</label>
+                  <section *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)">
+                    <section *ngIf="lastname?.errors?.['required']" class="alert alert-success">
+                      El Apellido es obligatorio
+                    </section>
                   </section>
                 </section>
-                <section class="form-group row">
-                  <label for="password" class="form-label">Password</label>
-                  <section>
-                    <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" required>
+
+                <section class="form-outline mb-4">
+                  <input type="text" class="form-control form-control-lg" formControlName="username" />
+                  <label class="form-label" for="username">Username</label>
+                  <section *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+                    <section *ngIf="username?.errors?.['required']" class="alert alert-success">
+                      El usuario es obligatorio
+                    </section>
                   </section>
                 </section>
-                <section class="form-group row mt-3">
-                  <section class="text-center">
-                    <button type="button" class="btn btn-outline-dark" (click)="EnviarMensaje()">Sign in</button>
+
+                <section class="form-outline mb-4">
+                  <input type="password" class="form-control form-control-lg" formControlName="password" />
+                  <label class="form-label" for="password">Password</label>
+                  <section *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                    <section *ngIf="password?.errors?.['required']" class="alert alert-success">
+                      La Contraseña es obligatorio
+                    </section>
                   </section>
+                </section>
+
+                <section class="d-flex justify-content-center">
+                  <input type="submit" value="Registrar" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body-light" [disabled]="registroForm.invalid">
                 </section>
               </form>
-        </section>     
+            </section>
+          </section>
+        </section>
+      </section>
     </section>
+  </section>
 </section>
